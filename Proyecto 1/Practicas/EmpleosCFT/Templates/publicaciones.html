@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block content %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+      
+
+{% for practica in practicas %}
+    <div class="card-body">
+        
+        <h4>{{ practica.titulo }}</h4>
+        <p>{{ practica.carrera }}</p>
+        <p>{{ practica.empresa }}</p>
+        <p>{{ practica.descripcion }}</p>
+        <p>{{ practica.ubicacion }}</p>
+        <p>{{ practica.fecha }}</p> 
+        <br>
+        {% if practica.empresa == request.user %} 
+            <a href="{% url 'editar' practica.id %}">
+                <button>
+                    Editar
+                </button>
+            </a>
+            <form action="{% url 'borrar' practica.id %}" method="POST">
+                {% csrf_token %}
+                <button>
+                    Eliminar
+                </button>
+            </form>
+            
+        {% endif %}
+    </div>
+
+{% endfor %}   
+{% endblock %} 

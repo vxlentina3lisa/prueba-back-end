@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{%load static %} 
+{% block content %}
+        
+<main class="container">
+    <div class="row mt-5" > <!-- mt-5 sirve para dejar un espacio con la parte superio de la pagina-->
+        <section class="col-md-4 offset-md-4">
+                <form action="" method="POST" class="card custom-card-body">
+                    {% csrf_token %}
+                    <h1 class="text-center">Iniciar Sesión</h1>
+                    {{error}} 
+               <div class="mb3">
+                <label for="username"> Nombre de Empresa:</label>
+                <input type="text" name="username" class="form-control" placeholder="nombre de usuario" id="username">
+               </div>
+               <div class="mb3">
+                <label for="password">contraseña:</label>
+                <input type="password" name="password" class="form-control" placeholder="contraseña" id="password">
+               </div>
+               <br>
+                <button class="btn btn-primary">iniciar sesion</button>
+                <br>
+                <div class="pie-form">
+                    <a href="#"class="custom-text-color">¿Perdiste tu contraseña?</a>
+                    <br>
+                    <a href="/registro"class="custom-text-color">¿No tienes Cuenta? 
+                        Registrate</a>
+                    </div>
+                <div class="inferior text-center" >
+                    <a href="/"class="custom-text-color">Volver</a>
+                </div>
+                </form>
+        </section>
+    </div>
+</main>
+
+
+{% endblock %} 
